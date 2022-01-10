@@ -11,6 +11,12 @@ namespace CricketEcommerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if(Session["UserId"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
+
             using(SportsEcommerceEntities db= new SportsEcommerceEntities())
             {
                 //var alluser = db.GetAllUsers().ToString();

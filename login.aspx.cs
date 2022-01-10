@@ -13,16 +13,37 @@ namespace CricketEcommerce
         {
             this.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
+            if (Request.Cookies["Sports"] != null)
+            {
+                Session["UserId"] = Request.Cookies["Sports"]["UserId"];
+                Session["UserName"] = Request.Cookies["Sports"]["UserName"];
+                Session.Timeout = 720;
+                Response.Redirect("UserSetup.aspx");
+            }
+
         }
 
         protected void btnlogin_Click(object sender, EventArgs e)
         {
             using (SportsEcommerceEntities DB = new SportsEcommerceEntities())
             {
-                var login = DB.userlogin(txtemail.Text, txtpass.Text).ToList();
+                var pass = EncodePasswordToBase64(txtpass.Text);
+                var login = DB.userlogin(txtemail.Text, pass).ToList();
                 if (login.Count >= 1)
                 {
-                    //Response.Redirect("UserSetup.aspx");
+                    Session["UserId"] = login[0].ID.ToString();
+                    Session["UserName"] = login[0].UserName;
+                    Session.Timeout = 720;
+
+                    Response.Cookies["Sports"]["UserId"] = login[0].ID.ToString();
+                    Response.Cookies["Sports"]["UserName"] = login[0].UserName;
+                    Response.Cookies["Sports"].Expires = DateTime.Now.AddDays(30);
+
+                    Response.Redirect("UserSetup.aspx");
+                }
+                else
+                {
+                    loginerror.Text = "Invalid Email Or Password";
                 }
             }
 

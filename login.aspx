@@ -105,9 +105,13 @@
                                                 
                                             </div>
                                             <div class="group">
+                                                <asp:Label runat="server" ForeColor="Red" ID="loginerror" class="label"></asp:Label>
+                                            </div>
+                                            <div class="group">
                                                 <asp:Button runat="server" ValidationGroup="loginsubmit" ID="btnlogin" OnClick="btnlogin_Click"  class="button" Text="Log In" />
                                             </div>
                                         </div>
+
                                         <div class="hr"></div>
                                         <div class="foot">
                                             <a href="#" class="text-white">Forgot Password?</a>

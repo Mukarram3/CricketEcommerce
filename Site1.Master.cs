@@ -13,5 +13,12 @@ namespace CricketEcommerce
         {
 
         }
+
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Cookies["Sports"].Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("login.aspx");
+        }
     }
 }

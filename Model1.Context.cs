@@ -29,17 +29,12 @@ namespace CricketEcommerce
     
         public virtual DbSet<User> Users { get; set; }
     
-        public virtual int GetAllUsers()
+        public virtual ObjectResult<GetAllUser_Result> GetAllUser()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetAllUsers");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUser_Result>("GetAllUser");
         }
     
-        public virtual int GetAllUser()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetAllUser");
-        }
-    
-        public virtual int userlogin(string email, string password)
+        public virtual ObjectResult<userlogin_Result> userlogin(string email, string password)
         {
             var emailParameter = email != null ?
                 new ObjectParameter("Email", email) :
@@ -49,7 +44,7 @@ namespace CricketEcommerce
                 new ObjectParameter("Password", password) :
                 new ObjectParameter("Password", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("userlogin", emailParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<userlogin_Result>("userlogin", emailParameter, passwordParameter);
         }
     }
 }
