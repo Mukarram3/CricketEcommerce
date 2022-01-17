@@ -11,7 +11,7 @@ namespace CricketEcommerce
 {
     using System;
     
-    public partial class userlogin_Result
+    public partial class edituser_Result
     {
         public int ID { get; set; }
         public string UserName { get; set; }

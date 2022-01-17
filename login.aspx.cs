@@ -21,6 +21,8 @@ namespace CricketEcommerce
                 Response.Redirect("UserSetup.aspx");
             }
 
+            togglepass.Attributes.Add("toggle", "#txtpass");
+
         }
 
         protected void btnlogin_Click(object sender, EventArgs e)
@@ -73,23 +75,37 @@ namespace CricketEcommerce
         {
             using (SportsEcommerceEntities db = new SportsEcommerceEntities())
             {
-                User tb = new User();
-                tb.UserName = txtusername.Text;
-                tb.FatherName = txtfathername.Text;
-                tb.Email = txtsignupemail.Text;
-                tb.Password = EncodePasswordToBase64(txtsignuppass.Text);
-                tb.Phone = txtsignupphone.Text;
-                tb.Status = true;
-                db.Users.Add(tb);
-                var result=db.SaveChanges();
-                if (result == 1)
+                var exist = db.emailexists(txtsignupemail.Text).FirstOrDefault();
+                if (exist != null)
                 {
-
+                    emailexist.Text = "Email Already Exists";
                 }
                 else
                 {
+                    User tb = new User();
+                    tb.UserName = txtusername.Text;
+                    tb.FatherName = txtfathername.Text;
+                    tb.Email = txtsignupemail.Text;
+                    tb.Password = EncodePasswordToBase64(txtsignuppass.Text);
+                    tb.Phone = txtsignupphone.Text;
+                    tb.Status = true;
+                    tb.Type = "user";
 
+                    file.SaveAs(Server.MapPath("assets/images/" + file.FileName));
+
+                    tb.Image = file.FileName;
+                    db.Users.Add(tb);
+                    var result = db.SaveChanges();
+                    if (result == 1)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                 }
+                
             }
         }
     }

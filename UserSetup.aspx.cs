@@ -17,11 +17,37 @@ namespace CricketEcommerce
                 Response.Redirect("login.aspx");
             }
 
-            using(SportsEcommerceEntities db= new SportsEcommerceEntities())
+            UserGridView();
+        }
+
+        protected void UserGridView()
+        {
+            using (SportsEcommerceEntities db = new SportsEcommerceEntities())
             {
-                //var alluser = db.GetAllUsers().ToString();
-                //GV.DataSource = alluser;
-                //GV.DataBind();
+                var alluser = db.GetAllUser().ToList();
+                GV.DataSource = alluser;
+                GV.DataBind();
+            }
+        }
+
+        protected void GV_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Edit")
+            {
+                Response.Redirect("User.aspx/?ID="+e.CommandArgument);
+            }
+            if (e.CommandName == "Delete")
+            {
+                using (SportsEcommerceEntities db= new SportsEcommerceEntities())
+                {
+                    var deluser=db.deleteuser(Convert.ToInt32(e.CommandArgument));
+                    if (deluser == 1)
+                    {
+                        var alluser = db.GetAllUser().ToList();
+                        GV.DataSource = alluser;
+                        GV.DataBind();
+                    }
+                }
             }
         }
     }

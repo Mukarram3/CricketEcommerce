@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
-    <Content Include="assets\css\login.css" />
     <Content Include="assets\css\pages\error\error-3.css" />
     <Content Include="assets\css\pages\error\error-3.min.css" />
     <Content Include="assets\css\pages\error\error-4.css" />
@@ -114,14 +113,18 @@
     <Content Include="assets\css\pages\wizard\wizard-4.css" />
     <Content Include="assets\css\pages\wizard\wizard-4.min.css" />
     <Content Include="assets\css\style.bundle.css" />
+    <Content Include="assets\css\style.css" />
     <Content Include="assets\css\themes\layout\aside\dark.css" />
     <Content Include="assets\css\themes\layout\brand\dark.css" />
     <Content Include="assets\css\themes\layout\header\base\light.css" />
     <Content Include="assets\css\themes\layout\header\menu\light.css" />
+    <Content Include="assets\images\bg.jpg" />
     <Content Include="assets\images\logo.jpg" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\main.js" />
     <Content Include="assets\js\pages\widgets.js" />
+    <Content Include="assets\js\popper.js" />
     <Content Include="assets\js\scripts.bundle.js" />
     <Content Include="assets\plugins\custom\fullcalendar\fullcalendar.bundle.css" />
     <Content Include="assets\plugins\custom\fullcalendar\fullcalendar.bundle.js" />
@@ -140,10 +143,17 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="User.aspx" />
     <Content Include="UserSetup.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="edituser_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="emailexists_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAllUser_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -177,6 +187,13 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -192,6 +209,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\endless-will-victory-mixed-media-600w-758425387.webp" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>

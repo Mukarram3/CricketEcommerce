@@ -20,8 +20,8 @@
 
 
                     <!--begin::Button-->
-                    <a href="#" class="btn btn-primary font-weight-bolder">
-                        <span class="svg-icon svg-icon-md">
+                        <asp:HyperLink  runat="server" CssClass="btn btn-primary font-weight-bolder" NavigateUrl="~/User.aspx">                        
+                            <span class="svg-icon svg-icon-md">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -31,27 +31,43 @@
                                 </g>
                             </svg>
                             <!--end::Svg Icon-->
-                        </span>New User</a>
+                        </span>New User</asp:HyperLink>
+
                     <!--end::Button-->
                 </div>
             </div>
             <div class="card-body">
-
+                <asp:Label ID="lbl" runat="server"></asp:Label>
                 <!--begin: Datatable-->
-                <div id="kt_datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div id="kt_datatable_wrapper" class="dataTables_wrapper  dt-bootstrap4 no-footer">
                     <div class="row">
                         <div class="col-sm-12">
-                            <asp:GridView CssClass="table" runat="server" ID="GV" AutoGenerateColumns="false">
+                            <asp:GridView CssClass="table table-bordered table-hover table-primary table-striped" OnRowCommand="GV_RowCommand" runat="server" ID="GV" AutoGenerateColumns="false">
 
-                                    <Columns>
-                                        <asp:BoundField DataField="ID" HeaderText="User ID" />
-                                        <asp:BoundField DataField="UserName" HeaderText="User Name" />
-                                        <asp:BoundField DataField="FatherName" HeaderText="FatherName" />
-                                        <asp:BoundField DataField="Email" HeaderText="Email" />
-                                        <asp:BoundField DataField="Password" HeaderText="Password" />
-                                        <asp:BoundField DataField="Phone" HeaderText="Phone" />
-                                    </Columns>
-                                </asp:GridView>
+                                <Columns>
+
+                                    <asp:BoundField DataField="ID" HeaderText="User ID" />
+                                    <asp:BoundField DataField="UserName" HeaderText="User Name" />
+                                    <asp:BoundField DataField="FatherName" HeaderText="FatherName" />
+                                    <asp:BoundField DataField="Email" HeaderText="Email" />
+                                    <asp:TemplateField HeaderText="User Image">
+                                        <ItemTemplate>
+                                            <asp:Image runat="server" Width="50px" Height="50px" ImageUrl="~/assets/images/<%# Bind('Image') %>" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Phone" HeaderText="Phone" />
+                                    <asp:BoundField DataField="Type" HeaderText="Type" />
+                                    <asp:TemplateField HeaderText="Action">
+                                        <ItemTemplate>
+                                            <asp:LinkButton runat="server" ID="edit" CommandName="Edit" CommandArgument="<%# Bind('ID') %>">Edit</asp:LinkButton>
+                                            <asp:LinkButton runat="server" ID="delete" OnClientClick="return confirm('Are You To Delete??')" CommandName="Delete" CommandArgument="<%# Bind('ID') %>">Delete</asp:LinkButton>
+
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                </Columns>
+
+                            </asp:GridView>
                         </div>
                     </div>
 

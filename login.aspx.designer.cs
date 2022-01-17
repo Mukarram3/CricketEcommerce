@@ -42,13 +42,13 @@ namespace CricketEcommerce
         protected global::System.Web.UI.WebControls.RadioButton tab2;
 
         /// <summary>
-        /// encrypt control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label encrypt;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// txtemail control.
@@ -60,13 +60,13 @@ namespace CricketEcommerce
         protected global::System.Web.UI.WebControls.TextBox txtemail;
 
         /// <summary>
-        /// decrypt control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label decrypt;
+        protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
         /// txtpass control.
@@ -76,6 +76,15 @@ namespace CricketEcommerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtpass;
+
+        /// <summary>
+        /// togglepass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label togglepass;
 
         /// <summary>
         /// loginerror control.
@@ -123,6 +132,15 @@ namespace CricketEcommerce
         protected global::System.Web.UI.WebControls.TextBox txtsignupemail;
 
         /// <summary>
+        /// emailexist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label emailexist;
+
+        /// <summary>
         /// txtsignuppass control.
         /// </summary>
         /// <remarks>
@@ -139,6 +157,15 @@ namespace CricketEcommerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsignuprepass;
+
+        /// <summary>
+        /// file control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload file;
 
         /// <summary>
         /// txtsignupphone control.

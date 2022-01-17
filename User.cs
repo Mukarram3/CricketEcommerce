@@ -21,5 +21,7 @@ namespace CricketEcommerce
         public string Password { get; set; }
         public string Phone { get; set; }
         public bool Status { get; set; }
+        public string Image { get; set; }
+        public string Type { get; set; }
     }
 }
