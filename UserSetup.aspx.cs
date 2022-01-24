@@ -16,7 +16,6 @@ namespace CricketEcommerce
             {
                 Response.Redirect("login.aspx");
             }
-
             UserGridView();
         }
 
@@ -27,6 +26,7 @@ namespace CricketEcommerce
                 var alluser = db.GetAllUser().ToList();
                 GV.DataSource = alluser;
                 GV.DataBind();
+                
             }
         }
 
@@ -49,6 +49,16 @@ namespace CricketEcommerce
                     }
                 }
             }
+        }
+
+        protected void GV_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+           
+        }
+
+        protected void GV_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
         }
     }
 }

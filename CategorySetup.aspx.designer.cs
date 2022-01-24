@@ -11,7 +11,7 @@ namespace CricketEcommerce
 {
 
 
-    public partial class UserSetup
+    public partial class CategorySetup
     {
 
         /// <summary>

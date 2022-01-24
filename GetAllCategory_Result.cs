@@ -11,16 +11,11 @@ namespace CricketEcommerce
 {
     using System;
     
-    public partial class edituser_Result
+    public partial class GetAllCategory_Result
     {
         public int ID { get; set; }
-        public string UserName { get; set; }
-        public string FatherName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Phone { get; set; }
-        public bool Status { get; set; }
-        public string Image { get; set; }
-        public string Type { get; set; }
+        public string CategoryName { get; set; }
+        public string Description { get; set; }
+        public Nullable<bool> Status { get; set; }
     }
 }

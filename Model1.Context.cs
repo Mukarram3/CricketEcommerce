@@ -27,7 +27,17 @@ namespace CricketEcommerce
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<User> Users { get; set; }
+    
+        public virtual int DeleteCategory(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteCategory", iDParameter);
+        }
     
         public virtual int deleteuser(Nullable<int> iD)
         {
@@ -38,15 +48,6 @@ namespace CricketEcommerce
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deleteuser", iDParameter);
         }
     
-        public virtual ObjectResult<edituser_Result> edituser(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<edituser_Result>("edituser", idParameter);
-        }
-    
         public virtual ObjectResult<emailexists_Result> emailexists(string email)
         {
             var emailParameter = email != null ?
@@ -54,6 +55,11 @@ namespace CricketEcommerce
                 new ObjectParameter("email", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<emailexists_Result>("emailexists", emailParameter);
+        }
+    
+        public virtual ObjectResult<GetAllCategory_Result> GetAllCategory()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllCategory_Result>("GetAllCategory");
         }
     
         public virtual ObjectResult<GetAllUser_Result> GetAllUser()

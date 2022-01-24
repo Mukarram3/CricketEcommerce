@@ -79,7 +79,7 @@
         
     </script>
 </head>
-<body  class="img js-fullheight" style="background-image: url(assets/images/bg.jpg);">
+<body  class="img js-fullheight" style="background-image: url(assets/images/backgroudimage.JPEG);">
     <form id="form1" runat="server" class="signin-form">
     <section class="ftco-section">
 		<div class="container">
@@ -159,9 +159,9 @@
                                                 <asp:CompareValidator ValidationGroup="signupsubmit" runat="server" ControlToValidate="txtsignuprepass" ControlToCompare="txtsignuppass" ErrorMessage="Password does not Matched" ForeColor="Red"></asp:CompareValidator>
                                             </div>
                                             <div class="group">
-                                                <asp:Label runat="server" AssociatedControlID="image" class="label" Text="Choose Image"></asp:Label>
+                                                <asp:Label runat="server" AssociatedControlID="file" class="label" Text="Choose Image"></asp:Label>
                                                 <asp:FileUpload runat="server" ID="file" CssClass="form-control" />
-                                                <asp:RequiredFieldValidator ValidationGroup="signupsubmit" runat="server" ControlToValidate="image" ErrorMessage="Please Choose Image" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ValidationGroup="signupsubmit" runat="server" ControlToValidate="file" ErrorMessage="Please Choose Image" ForeColor="Red"></asp:RequiredFieldValidator>
                                             </div>
                                             <div class="group">
                                                 <asp:label runat="server" AssociatedControlID="txtsignupphone" for="phone" class="label" Text="Phone"></asp:label>

@@ -1,11 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="UserSetup.aspx.cs" Inherits="CricketEcommerce.UserSetup" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CategorySetup.aspx.cs" Inherits="CricketEcommerce.CategorySetup" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>User Page</title>
+    <title>Category Page</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div>
+      <div>
 
 
         <%-- User Section Start --%>
@@ -20,7 +19,7 @@
 
 
                     <!--begin::Button-->
-                    <asp:HyperLink runat="server" CssClass="btn btn-primary font-weight-bolder" NavigateUrl="~/User.aspx">                        
+                        <asp:HyperLink  runat="server" CssClass="btn btn-primary font-weight-bolder" NavigateUrl="~/Category.aspx">                        
                             <span class="svg-icon svg-icon-md">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -31,7 +30,7 @@
                                 </g>
                             </svg>
                             <!--end::Svg Icon-->
-                        </span>New User</asp:HyperLink>
+                        </span>New Category</asp:HyperLink>
 
                     <!--end::Button-->
                 </div>
@@ -42,24 +41,13 @@
                 <div id="kt_datatable_wrapper" runat="server" class="dataTables_wrapper  dt-bootstrap4 no-footer">
                     <div class="row">
                         <div class="col-12">
-                            <asp:GridView CssClass="table table-bordered table-hover table-primary table-striped" OnRowDeleting="GV_RowDeleting" OnRowEditing="GV_RowEditing" OnRowCommand="GV_RowCommand" runat="server" ID="GV" AutoGenerateColumns="false">
-
+                            <asp:GridView runat="server" ID="GV" OnRowCommand="GV_RowCommand" OnRowDeleting="GV_RowDeleting" OnRowEditing="GV_RowEditing" CssClass="table table-bordered table-hover table-primary table-striped" AutoGenerateColumns="false">
                                 <Columns>
-
-                                    <asp:BoundField DataField="ID" HeaderText="User ID" />
-                                    <asp:BoundField DataField="UserName" HeaderText="User Name" />
-                                    <asp:BoundField DataField="FatherName" HeaderText="FatherName" />
-                                    <asp:BoundField DataField="Email" HeaderText="Email" />
-                                    <asp:TemplateField HeaderText="User Image">
-                                        <ItemTemplate>
-                                            <asp:Image runat="server" Width="50px" Height="50px" ImageUrl="https://localhost:44359/assets/images/logo.jpg" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:BoundField DataField="Phone" HeaderText="Phone" />
-                                    <asp:BoundField DataField="Type" HeaderText="Type" />
-                                    <asp:BoundField DataField="Status" HeaderText="Status" />
+                                    <asp:BoundField HeaderText="ID" DataField="ID" />
+                                    <asp:BoundField HeaderText="Category Name" DataField="CategoryName" />
+                                    <asp:BoundField HeaderText="Category Description" DataField="Description" />
                                     <asp:TemplateField HeaderText="Action">
-                                        <ItemTemplate>
+                                         <ItemTemplate>
                                             <asp:LinkButton runat="server" ID="edit" CommandName="Edit" CommandArgument="<%# Bind('ID') %>"><span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect x="0" y="0" width="24" height="24"/>
@@ -77,9 +65,7 @@
 
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
                                 </Columns>
-
                             </asp:GridView>
                         </div>
                     </div>
@@ -92,5 +78,4 @@
         <%-- User Section End --%>
     </div>
     <!--end::Body-->
-
 </asp:Content>

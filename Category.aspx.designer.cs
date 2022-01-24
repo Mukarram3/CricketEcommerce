@@ -11,34 +11,43 @@ namespace CricketEcommerce
 {
 
 
-    public partial class UserSetup
+    public partial class Category1
     {
 
         /// <summary>
-        /// lbl control.
+        /// txtcatname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl;
+        protected global::System.Web.UI.WebControls.TextBox txtcatname;
 
         /// <summary>
-        /// kt_datatable_wrapper control.
+        /// txtdescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl kt_datatable_wrapper;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtdescription;
 
         /// <summary>
-        /// GV control.
+        /// txtstatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV;
+        protected global::System.Web.UI.WebControls.DropDownList txtstatus;
+
+        /// <summary>
+        /// btninsert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btninsert;
     }
 }

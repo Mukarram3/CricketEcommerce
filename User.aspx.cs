@@ -13,12 +13,15 @@ namespace CricketEcommerce
         {
             this.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
+            type.Items.Insert(0, new ListItem("Please Select Type", "0"));
+            txtstatus.Items.Insert(0, new ListItem("Please Select Status", "0"));
+
             if(Request.QueryString["ID"] != null)
             {
                 int id=Convert.ToInt32(Request.QueryString["ID"]);
                 using(SportsEcommerceEntities db=new SportsEcommerceEntities())
                 {
-                    var result = db.edituser(id).FirstOrDefault();
+                    var result = db.Users.FirstOrDefault(v=> v.ID==id);
                     if(result != null)
                     {
                         txtusername.Text =result.UserName;
@@ -26,7 +29,8 @@ namespace CricketEcommerce
                         txtemail.Text = result.Email;
                         txtpass.Text = DecodeFrom64(result.Password);
                         txtphone.Text = result.Phone;
-                        txtstatus.SelectedValue = Convert.ToInt32(result.Status).ToString();
+                        type.SelectedItem.Text = result.Type;
+                        txtstatus.SelectedItem.Text = result.Status.ToString();
 
                     }
                 }
@@ -55,66 +59,57 @@ namespace CricketEcommerce
 
         protected void btninsert_Click(object sender, EventArgs e)
         {
-            if (Request.QueryString["ID"] != null)
+            using (SportsEcommerceEntities db = new SportsEcommerceEntities())
             {
-                int id = Convert.ToInt32(Request.QueryString["ID"]);
-                using (SportsEcommerceEntities db = new SportsEcommerceEntities())
+                User user = null;
+                if (Request.QueryString["ID"] != null)
                 {
-                    var result = db.edituser(id).FirstOrDefault();
-                    if (result != null)
-                    {
-                        result.UserName= txtusername.Text;
-                        result.FatherName= txtfathername.Text;
-                        result.Email=txtemail.Text;
-                        result.Password= EncodePasswordToBase64(txtpass.Text);
-                        result.Phone= txtphone.Text;
-                        result.Status = true;
-                        var saved=db.SaveChanges();
-                        if(saved == 1)
-                        {
-                            Response.Redirect("UserSetup.aspx");
-                        }
+                    int id = Convert.ToInt32(Request.QueryString["ID"]);
+                    user = db.Users.FirstOrDefault(v => v.ID == id);
 
-
-                    }
                 }
-            }
-
-            else
-            {
-                using (SportsEcommerceEntities db = new SportsEcommerceEntities())
+                else
                 {
-
-                   
-                    var exist=db.emailexists(txtemail.Text).FirstOrDefault();
-                    if(exist != null)
-                    {
-                        emailexist.Text = "Email Already Exists";
-                    }
-                    else
-                    {
-                        User user = new User();
-                        user.Email = txtemail.Text;
-                        user.UserName = txtusername.Text;
-                        user.FatherName = txtfathername.Text;
-
-                        user.Password = EncodePasswordToBase64(txtpass.Text);
-                        user.Phone = txtphone.Text;
-                        user.Status = true;
-
-                        file.SaveAs(Server.MapPath("assets/images/" + file.FileName));
-                        user.Image = file.FileName;
-                        user.Type = type.SelectedItem.Text;
-                        db.Users.Add(user);
-                        var saved = db.SaveChanges();
-                        if (saved == 1)
-                        {
-                            Response.Redirect("UserSetup.aspx");
-                        }
-                    }
-                    
+                    user = new User();
                 }
-            }
+
+                user.Email = txtemail.Text;
+                user.UserName = txtusername.Text;
+                user.FatherName = txtfathername.Text;
+
+                user.Password = EncodePasswordToBase64(txtpass.Text);
+                user.Phone = txtphone.Text;
+                user.Status = true;
+
+                file.SaveAs(Server.MapPath("assets/images/" + file.FileName));
+                user.Image = file.FileName;
+                user.Type = type.SelectedItem.Text;
+
+
+                var exist = db.emailexists(txtemail.Text).FirstOrDefault();
+                
+
+                    if (Request.QueryString["ID"] == null)
+                    {
+                        if (exist != null)
+                        {
+                            emailexist.Text = "Email Already Exists";
+                        }
+                        else
+                        {
+                            db.Users.Add(user);
+                        }
+                        
+                    }
+
+                    var saved = db.SaveChanges();
+                    if (saved == 1)
+                    {
+                        Response.Redirect("UserSetup.aspx");
+                    }
+                
+
+            }           
         }
     }
 }
