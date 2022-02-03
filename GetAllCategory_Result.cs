@@ -17,5 +17,6 @@ namespace CricketEcommerce
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public Nullable<bool> Status { get; set; }
+        public string Image { get; set; }
     }
 }

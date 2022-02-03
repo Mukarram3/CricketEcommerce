@@ -12,7 +12,7 @@ namespace CricketEcommerce
         protected void Page_Load(object sender, EventArgs e)
         {
             this.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-
+            
             type.Items.Insert(0, new ListItem("Please Select Type", "0"));
             txtstatus.Items.Insert(0, new ListItem("Please Select Status", "0"));
 
@@ -29,6 +29,7 @@ namespace CricketEcommerce
                         txtemail.Text = result.Email;
                         txtpass.Text = DecodeFrom64(result.Password);
                         txtphone.Text = result.Phone;
+                        image.ImageUrl = "assets/images/" + result.Image;
                         type.SelectedItem.Text = result.Type;
                         txtstatus.SelectedItem.Text = result.Status.ToString();
 
@@ -79,7 +80,15 @@ namespace CricketEcommerce
 
                 user.Password = EncodePasswordToBase64(txtpass.Text);
                 user.Phone = txtphone.Text;
-                user.Status = true;
+
+                if(txtstatus.SelectedItem.Text == "True")
+                {
+                    user.Status = true;
+                }
+                if (txtstatus.SelectedItem.Text == "False")
+                {
+                    user.Status = false;
+                }
 
                 file.SaveAs(Server.MapPath("assets/images/" + file.FileName));
                 user.Image = file.FileName;

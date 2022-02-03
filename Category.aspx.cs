@@ -25,7 +25,7 @@ namespace CricketEcommerce
                     {
                         txtcatname.Text = data.CategoryName;
                         txtdescription.InnerText = data.Description;
-                        txtstatus.SelectedItem.Text = data.Status.ToString();
+                        //txtstatus.SelectedItem.Text = data.Status.ToString();
                     }
 
                 }
@@ -55,13 +55,15 @@ namespace CricketEcommerce
                     db.Categories.Add(tb);
                 }
                 var result = db.SaveChanges();
+
+                txtcatname.Text = result.ToString();
                 if (result == 1)
                 {
                     Response.Redirect("CategorySetup.aspx");
                 }
                 else
                 {
-                    Response.Redirect("CategorySetup.aspx");
+                    //Response.Redirect("CategorySetup.aspx");
                 }
             }
         }

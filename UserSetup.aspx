@@ -52,7 +52,7 @@
                                     <asp:BoundField DataField="Email" HeaderText="Email" />
                                     <asp:TemplateField HeaderText="User Image">
                                         <ItemTemplate>
-                                            <asp:Image runat="server" Width="50px" Height="50px" ImageUrl="https://localhost:44359/assets/images/logo.jpg" />
+                                            <asp:Image runat="server" Width="50px" Height="50px" ImageUrl="https://localhost:44359/assets/images/<%# Bind('Image') %> " />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="Phone" HeaderText="Phone" />
@@ -92,5 +92,7 @@
         <%-- User Section End --%>
     </div>
     <!--end::Body-->
+
+    
 
 </asp:Content>

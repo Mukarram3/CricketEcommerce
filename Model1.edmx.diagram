@@ -4,9 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ed9b273c52c8481bb18ec7928481aeca" Name="Diagram1">
-        <EntityTypeShape EntityType="SportsEcommerceModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportsEcommerceModel.User" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="0673466cee114a73b9d62259c1438529" Name="Diagram1">
+        <EntityTypeShape EntityType="SportsEcommerceModel.Category" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsEcommerceModel.User" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportsEcommerceModel.Product" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="SportsEcommerceModel.FK_Product_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

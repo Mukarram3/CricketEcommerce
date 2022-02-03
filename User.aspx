@@ -74,6 +74,7 @@
                                 <asp:FileUpload runat="server" ID="file" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="file" ErrorMessage="Please Choose Image" ForeColor="Red"></asp:RequiredFieldValidator>
 
+                                <asp:Image ID="image" runat="server" Width="50px" />
                             </div>
                             <div class="col-lg-6">
                                 <asp:Label runat="server" AssociatedControlID="type"  Text="Type"></asp:Label>
@@ -81,7 +82,7 @@
                                     <asp:ListItem Text="Admin" Value="admin"></asp:ListItem>
                                     <asp:ListItem Text="User" Value="user"></asp:ListItem>
                                 </asp:DropDownList>
-                               <asp:RequiredFieldValidator runat="server" ControlToValidate="type" ErrorMessage="Please Select Type Of User" ForeColor="Red"></asp:RequiredFieldValidator>
+                               <asp:RequiredFieldValidator runat="server" ControlToValidate="type" InitialValue="0" ErrorMessage="Please Select Type Of User" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </div>
                         </div>
 
@@ -91,10 +92,10 @@
                                 <asp:Label runat="server" AssociatedControlID="txtstatus"  Text="Status"></asp:Label>
 
                                 <asp:DropDownList runat="server" ID="txtstatus" class="form-control" placeholder="Enter Status" onfocus="this.placeholder='' " onblur="this.placeholder='Enter Status' " name="status">
-                                    <asp:ListItem Text="True" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="False" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="True" Value="true"></asp:ListItem>
+                                    <asp:ListItem Text="False" Value="false"></asp:ListItem>
                                 </asp:DropDownList>
-                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtstatus" ErrorMessage="Please Enter Status" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator InitialValue="0" runat="server" ControlToValidate="txtstatus" ErrorMessage="Please Enter Status" ForeColor="Red"></asp:RequiredFieldValidator>
 
                             </div>
                         </div>

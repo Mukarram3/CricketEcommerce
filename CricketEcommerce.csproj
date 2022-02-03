@@ -52,6 +52,9 @@
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -77,6 +80,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\bootstrap-3.3.6-dist\css\bootstrap-theme.css" />
+    <Content Include="assets\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css" />
+    <Content Include="assets\bootstrap-3.3.6-dist\css\bootstrap.css" />
+    <Content Include="assets\bootstrap-3.3.6-dist\css\bootstrap.min.css" />
+    <Content Include="assets\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\bootstrap-3.3.6-dist\js\bootstrap.js" />
+    <Content Include="assets\bootstrap-3.3.6-dist\js\bootstrap.min.js" />
+    <Content Include="assets\bootstrap-3.3.6-dist\js\npm.js" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\pages\error\error-3.css" />
     <Content Include="assets\css\pages\error\error-3.min.css" />
@@ -121,21 +132,62 @@
     <Content Include="assets\css\themes\layout\header\base\light.css" />
     <Content Include="assets\css\themes\layout\header\menu\light.css" />
     <Content Include="assets\images\bg.jpg" />
+    <Content Include="assets\images\car1.jpg" />
+    <Content Include="assets\images\car2.jpg" />
+    <Content Include="assets\images\car3.jpg" />
+    <Content Include="assets\images\fav.png" />
+    <Content Include="assets\images\highlight-bg.png" />
+    <Content Include="assets\images\hover.png" />
+    <Content Include="assets\images\loading.gif" />
     <Content Include="assets\images\logo.jpg" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\menu-bg.png" />
+    <Content Include="assets\jquery.min.js" />
     <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\googleapi.js" />
     <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jqueryMigrate.js" />
+    <Content Include="assets\js\JquerySlick.js" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\pages\widgets.js" />
     <Content Include="assets\js\popper.js" />
     <Content Include="assets\js\scripts.bundle.js" />
+    <Content Include="assets\main.js" />
     <Content Include="assets\plugins\custom\fullcalendar\fullcalendar.bundle.css" />
     <Content Include="assets\plugins\custom\fullcalendar\fullcalendar.bundle.js" />
     <Content Include="assets\plugins\custom\prismjs\prismjs.bundle.css" />
     <Content Include="assets\plugins\custom\prismjs\prismjs.bundle.js" />
     <Content Include="assets\plugins\global\plugins.bundle.css" />
     <Content Include="assets\plugins\global\plugins.bundle.js" />
+    <Content Include="assets\prod_images\adidasfootball.JPG" />
+    <Content Include="assets\prod_images\babyshirt.JPG" />
+    <Content Include="assets\prod_images\computertable.JPG" />
+    <Content Include="assets\prod_images\iPad.jpg" />
+    <Content Include="assets\prod_images\iphonemobile.JPG" />
+    <Content Include="assets\prod_images\jeans.JPG" />
+    <Content Include="assets\prod_images\kidsjeans.JPG" />
+    <Content Include="assets\prod_images\lehenga.JPG" />
+    <Content Include="assets\prod_images\lgaqua.JPG" />
+    <Content Include="assets\prod_images\nikeshoes.JPG" />
+    <Content Include="assets\prod_images\philipstrimmer.JPG" />
+    <Content Include="assets\prod_images\samsungduos.JPG" />
+    <Content Include="assets\prod_images\samsungtab.JPG" />
+    <Content Include="assets\prod_images\samsung_galaxy.jpg" />
+    <Content Include="assets\prod_images\saree.JPG" />
+    <Content Include="assets\prod_images\tshirt.JPG" />
+    <Content Include="assets\prod_images\vaio.JPG" />
+    <Content Include="assets\slick\ajax-loader.gif" />
+    <Content Include="assets\slick\fonts\slick.svg" />
+    <Content Include="assets\slick\slick-theme.css" />
+    <Content Include="assets\slick\slick.css" />
+    <Content Include="assets\slick\slick.js" />
+    <Content Include="assets\slick\slick.min.js" />
+    <Content Include="assets\style.css" />
+    <Content Include="assets\styles.css" />
     <Content Include="Category.aspx" />
+    <Content Include="CategoryIndex.aspx" />
     <Content Include="CategorySetup.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="login.aspx" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -147,11 +199,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Product.aspx" />
+    <Content Include="ProductDetail.aspx" />
+    <Content Include="ProductIndex.aspx" />
+    <Content Include="ProductSetup.aspx" />
     <Content Include="User.aspx" />
     <Content Include="UserSetup.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Email.cs" />
     <Compile Include="Category.aspx.cs">
       <DependentUpon>Category.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,7 +218,16 @@
     </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryIndex.aspx.cs">
+      <DependentUpon>CategoryIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryIndex.aspx.designer.cs">
+      <DependentUpon>CategoryIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryProducts_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="CategorySetup.aspx.cs">
       <DependentUpon>CategorySetup.aspx</DependentUpon>
@@ -176,8 +242,14 @@
     <Compile Include="GetAllCategory_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAllProducts_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAllUser_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -201,6 +273,37 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Product.aspx.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Product.aspx.designer.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductDetail.aspx.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductDetail.aspx.designer.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductIndex.aspx.cs">
+      <DependentUpon>ProductIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductIndex.aspx.designer.cs">
+      <DependentUpon>ProductIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup.aspx.cs">
+      <DependentUpon>ProductSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup.aspx.designer.cs">
+      <DependentUpon>ProductSetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -208,6 +311,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site2.Master.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site2.Master.designer.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
     <Compile Include="User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
@@ -232,6 +342,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\images\endless-will-victory-mixed-media-600w-758425387.webp" />
+    <Content Include="assets\bootstrap-3.3.6-dist\css\bootstrap-theme.css.map" />
+    <Content Include="assets\bootstrap-3.3.6-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="assets\bootstrap-3.3.6-dist\css\bootstrap.css.map" />
+    <Content Include="assets\bootstrap-3.3.6-dist\css\bootstrap.min.css.map" />
+    <Content Include="assets\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\bootstrap-3.3.6-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\slick\config.rb" />
+    <Content Include="assets\slick\fonts\slick.eot" />
+    <Content Include="assets\slick\fonts\slick.ttf" />
+    <Content Include="assets\slick\fonts\slick.woff" />
+    <Content Include="assets\slick\slick-theme.less" />
+    <Content Include="assets\slick\slick-theme.scss" />
+    <Content Include="assets\slick\slick.less" />
+    <Content Include="assets\slick\slick.scss" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -241,6 +367,7 @@
     </Content>
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
+    <Content Include="Site2.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

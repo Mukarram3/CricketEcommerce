@@ -29,6 +29,12 @@ namespace CricketEcommerce
     
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+    
+        public virtual ObjectResult<string> Categorytitle()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("Categorytitle");
+        }
     
         public virtual int DeleteCategory(Nullable<int> iD)
         {
@@ -62,9 +68,23 @@ namespace CricketEcommerce
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllCategory_Result>("GetAllCategory");
         }
     
+        public virtual ObjectResult<GetAllProducts_Result> GetAllProducts()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProducts_Result>("GetAllProducts");
+        }
+    
         public virtual ObjectResult<GetAllUser_Result> GetAllUser()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUser_Result>("GetAllUser");
+        }
+    
+        public virtual int ProductDelete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ProductDelete", idParameter);
         }
     
         public virtual ObjectResult<userlogin_Result> userlogin(string email, string password)
@@ -78,6 +98,20 @@ namespace CricketEcommerce
                 new ObjectParameter("Password", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<userlogin_Result>("userlogin", emailParameter, passwordParameter);
+        }
+    
+        public virtual ObjectResult<CategoryProducts_Result> CategoryProducts(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CategoryProducts_Result>("CategoryProducts", iDParameter);
+        }
+    
+        public virtual ObjectResult<string> CategoryDesc()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CategoryDesc");
         }
     }
 }

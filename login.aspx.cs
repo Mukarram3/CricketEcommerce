@@ -20,7 +20,7 @@ namespace CricketEcommerce
                 Session.Timeout = 720;
                 Response.Redirect("UserSetup.aspx");
             }
-
+           
             togglepass.Attributes.Add("toggle", "#txtpass");
 
         }
@@ -35,13 +35,23 @@ namespace CricketEcommerce
                 {
                     Session["UserId"] = login[0].ID.ToString();
                     Session["UserName"] = login[0].UserName;
+                    Session["Type"] = login[0].Type;
                     Session.Timeout = 720;
 
                     Response.Cookies["Sports"]["UserId"] = login[0].ID.ToString();
                     Response.Cookies["Sports"]["UserName"] = login[0].UserName;
+                    Response.Cookies["Sports"]["Type"] = login[0].Type;
                     Response.Cookies["Sports"].Expires = DateTime.Now.AddDays(30);
 
-                    Response.Redirect("UserSetup.aspx");
+                    if(login[0].Type == "admin")
+                    {
+                        Response.Redirect("UserSetup.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("ProductIndex.aspx");
+                    }
+                    
                 }
                 else
                 {

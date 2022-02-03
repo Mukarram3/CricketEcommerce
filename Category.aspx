@@ -37,8 +37,8 @@
                             <div class="col-lg-3">
                                 <asp:Label runat="server" AssociatedControlID="txtstatus" Text="Category Status"></asp:Label>
                                 <asp:DropDownList runat="server" ID="txtstatus" CssClass="form-control">
-                                    <asp:ListItem Text="True" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="False" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="True" Value="true"></asp:ListItem>
+                                    <asp:ListItem Text="False" Value="false"></asp:ListItem>
                                 </asp:DropDownList>                                
                                 <asp:RequiredFieldValidator runat="server" InitialValue="0" ControlToValidate="txtstatus" ErrorMessage="Please Choose Status" ForeColor="Red"></asp:RequiredFieldValidator>
                                 
